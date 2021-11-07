@@ -145,3 +145,23 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
         * ./mvnw package
         * java -jar target/*jar
         * IDE에서 메인 애플리케이션 실행
+- 프로젝트 살펴보기
+    * 프로젝트 구조 설명
+        * 일반적인 메이븐 프로젝트
+        * src/main/java
+        * src/main/resources
+        * src/test/java
+        * src/test/resources
+    * 스프링 부트 기반 프로젝트
+        * 스프링 부트
+        * 스프링 데이터 JPA
+        * DB: HSQLDB
+        * 뷰: 타임리프
+        * 캐시: EHCache
+    * 코드가 어떻게 흘러가는 걸까?
+        * 로그로 분석하는 방법
+        * 디버거로 분석하는 방법
+    * 코드를 조금 고쳐볼까?
+        * LastName이 아니라 FirstName으로 검색해 볼까?
+        * 정확히 일치하는게 아니라 해당 키워드가 들어있는 걸 찾아볼까?
+        * Owner에 age 추가
