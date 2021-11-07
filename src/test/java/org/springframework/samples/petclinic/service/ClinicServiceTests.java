@@ -90,10 +90,10 @@ class ClinicServiceTests {
 
 	@Test
 	void shouldFindOwnersByLastName() {
-		Page<Owner> owners = this.owners.findByLastName("Davis", pageable);
+		Page<Owner> owners = this.owners.findByFirstName("Davis", pageable);
 		assertThat(owners).hasSize(2);
 
-		owners = this.owners.findByLastName("Daviss", pageable);
+		owners = this.owners.findByFirstName("Daviss", pageable);
 		assertThat(owners).isEmpty();
 	}
 
@@ -109,7 +109,7 @@ class ClinicServiceTests {
 	@Test
 	@Transactional
 	void shouldInsertOwner() {
-		Page<Owner> owners = this.owners.findByLastName("Schultz", pageable);
+		Page<Owner> owners = this.owners.findByFirstName("Schultz", pageable);
 		int found = (int) owners.getTotalElements();
 
 		Owner owner = new Owner();
@@ -121,7 +121,7 @@ class ClinicServiceTests {
 		this.owners.save(owner);
 		assertThat(owner.getId().longValue()).isNotEqualTo(0);
 
-		owners = this.owners.findByLastName("Schultz", pageable);
+		owners = this.owners.findByFirstName("Schultz", pageable);
 		assertThat(owners.getTotalElements()).isEqualTo(found + 1);
 	}
 

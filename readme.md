@@ -165,3 +165,14 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
         * LastName이 아니라 FirstName으로 검색해 볼까?
         * 정확히 일치하는게 아니라 해당 키워드가 들어있는 걸 찾아볼까?
         * Owner에 age 추가
+- 프로젝트 살펴보기 과제 풀이
+    * LastName이 아니라 FirstName으로 검색해 볼까?
+        * 뷰 변경
+        * 코드 조금 변경
+    * 정확히 일치하는게 아니라 해당 키워드가 들어있는 걸 찾아볼까?
+        * 쿼리만 변경
+    * Owner에 age 추가
+        * 모델 변경
+        * 스키마 변경
+        * 데이터 변경
+        * 뷰 변경
