@@ -220,3 +220,18 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
         * https://github.com/spring-guides/understanding/tree/master/application-context
         * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html
         * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/BeanFactory.html
+
+- 빈 (Bean) (스프링 IoC 컨테이너가 관리하는 객체)
+    * 어떻게 등록하지?
+        * Component Scanning
+            * @Component
+                * @Repository
+                * @Service
+                * @Controller
+                * @Configuration
+        * 또는 직접 일일히 XML이나 자바 설정 파일에 등록
+    * 어떻게 꺼내쓰지?
+        * @Autowired 또는 @Inject
+        * 또는 ApplicationContext에서 getBean()으로 직접 꺼내거나
+    * 특징
+        * 오로지 “빈"들만 의존성 주입을 해줍니다.
