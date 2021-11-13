@@ -20,6 +20,7 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -43,6 +44,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -62,6 +64,9 @@ class OwnerControllerTests {
 
 	@Autowired
 	private MockMvc mockMvc;
+
+	@Autowired
+	ApplicationContext applicationContext;
 
 	@MockBean
 	private OwnerRepository owners;
@@ -99,6 +104,12 @@ class OwnerControllerTests {
 		visit.setDate(LocalDate.now());
 		given(this.visits.findByPetId(max.getId())).willReturn(Collections.singletonList(visit));
 
+	}
+
+	@Test
+	void getBean() {
+		OwnerController bean = applicationContext.getBean(OwnerController.class);
+		assertNotNull(bean);
 	}
 
 	@Test
