@@ -235,3 +235,9 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
         * 또는 ApplicationContext에서 getBean()으로 직접 꺼내거나
     * 특징
         * 오로지 “빈"들만 의존성 주입을 해줍니다.
+
+- 의존성 주입 (Dependency Injection) (필요한 의존성을 어떻게 받아올 것인가..)
+    * @Autowired / @Inject를 어디에 붙일까?
+        * 생성자
+        * 필드
+        * Setter

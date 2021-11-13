@@ -15,11 +15,6 @@
  */
 package org.springframework.samples.petclinic.owner;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.validation.Valid;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,6 +27,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author Juergen Hoeller
  * @author Ken Krebs
@@ -43,16 +42,21 @@ class OwnerController {
 
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
 
+//	@Autowired
 	private final OwnerRepository owners;
 
+//	@Autowired
 	private final VisitRepository visits;
 
 	private final ApplicationContext applicationContext;
 
-	public OwnerController(OwnerRepository clinicService, VisitRepository visits, ApplicationContext applicationContext) {
+	private final PetRepository petRepository;
+
+	public OwnerController(OwnerRepository clinicService, VisitRepository visits, ApplicationContext applicationContext, PetRepository petRepository) {
 		this.owners = clinicService;
 		this.visits = visits;
 		this.applicationContext = applicationContext;
+		this.petRepository = petRepository;
 	}
 
 	// singleton scope
@@ -62,6 +66,17 @@ class OwnerController {
 		return "bean: " + applicationContext.getBean(OwnerRepository.class) + "\n"
 			+ "owners: " + this.owners;
 	}
+
+
+//	@Autowired
+//	public void setOwners(OwnerRepository owners) {
+//		this.owners = owners;
+//	}
+//
+//	@Autowired
+//	public void setVisits(VisitRepository visits) {
+//		this.visits = visits;
+//	}
 
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {
