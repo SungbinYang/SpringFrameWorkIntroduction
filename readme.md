@@ -176,3 +176,35 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
         * 스키마 변경
         * 데이터 변경
         * 뷰 변경
+- Inversion of Control (제어권이 뒤바뀜?)
+    * 일반적인 (의존성에 대한) 제어권: “내가 사용할 의존성은 내가 만든다.” 
+    
+    ```java
+    class OwnerController {
+        private OwnerRepository repository = new OwnerRepository();
+    }
+    ```
+    * IoC: “내가 사용할 의존성을 누군가 알아서 주겠지”
+        * 내가 사용할 의존성의 타입(또는 인터페이스)만 맞으면 어떤거든 상관없다.
+        * 그래야 내 코드 테스트 하기도 편하지.
+
+    ```java
+    class OwnerController {
+       private OwnerRepository repo;
+       public OwnerController(OwnerRepository repo) {
+       this.repo = repo;
+      } 
+     // repo를 사용합니다.
+    }
+
+    class OwnerControllerTest {
+      @Test
+      public void create() {
+        OwnerRepository repo = new OwnerRepository();
+        OwnerController controller = new OwnerController(repo);
+      }
+    }
+
+    ```
+  * 참고
+    * https://martinfowler.com/articles/injection.html
