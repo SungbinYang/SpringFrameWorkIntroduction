@@ -303,3 +303,36 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
     * https://refactoring.guru/design-patterns/proxy
 
 - 프록시 패턴 (기존 코드 건드리지 않고 새 기능 추가하기)
+
+- AOP 적용 예제 (@LogExecutionTime 으로 메소드 처리 시간 로깅하기)
+    * @LogExecutionTime 애노테이션 (어디에 적용할지 표시 해두는 용도)
+
+    ```java
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface LogExecutionTime {
+    }
+    ```
+    * 실제 Aspect (@LogExecutionTime 애노테이션 달린곳에 적용)
+    ```java
+    @Component
+    @Aspect
+    public class LogAspect {
+    
+       Logger logger = LoggerFactory.getLogger(LogAspect.class);
+    
+       @Around("@annotation(LogExecutionTime)")
+       public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
+           StopWatch stopWatch = new StopWatch();
+           stopWatch.start();
+    
+           Object proceed = joinPoint.proceed();
+    
+           stopWatch.stop();
+           logger.info(stopWatch.prettyPrint());
+    
+           return proceed;
+       }
+    
+    }
+    ```
