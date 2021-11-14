@@ -241,3 +241,63 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
         * 생성자
         * 필드
         * Setter
+
+- AOP 소개 (흩어진 코드를 한 곳으로 모아)
+    * 흩어진 AAAA 와 BBBB
+    
+    ```java
+    class A {
+       method a () {
+               AAAA -> AAA
+               오늘은 7월 4일 미국 독립 기념일이래요.
+               BBBB -> BB
+       }
+     
+       method b () {
+               AAAA -> AAA
+               저는 아침에 운동을 다녀와서 밥먹고 빨래를 했습니다.
+               BBBB -> BB
+       }
+    }
+    
+    class B {
+      method c() {
+              AAAA -> AAA
+              점심은 이거 찍느라 못먹었는데 저녁엔 제육볶음을 먹고 싶네요.
+              BBBB -> BB
+      }
+    }
+    ```
+  * 모아 놓은 AAAA 와 BBBB
+  
+    ```java
+    class A {
+       method a () {
+               오늘은 7월 4일 미국 독립 기념일이래요.
+       }
+     
+       method b () {
+               저는 아침에 운동을 다녀와서 밥먹고 빨래를 했습니다.
+       }
+    }
+    
+    class B {
+      method c() {
+              점심은 이거 찍느라 못먹었는데 저녁엔 제육볶음을 먹고 싶네요.
+      }
+    }
+    
+    class AAAABBBB {
+        method aaaabbb(JoinPoint point) {
+             AAAA
+          point.execute()
+             BBBB
+        }
+    }
+    ```
+  * 다양한 AOP 구현 방법
+    * 컴파일  A.java ----(AOP)---> A.class (AspectJ)
+    * 바이트코드 조작 A.java -> A.class ---(AOP)---> 메모리 (AspectJ)
+    * 프록시 패턴 (스프링 AOP)
+  * 프록시 패턴
+    * https://refactoring.guru/design-patterns/proxy
