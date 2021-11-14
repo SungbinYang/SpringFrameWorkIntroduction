@@ -301,3 +301,5 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
     * 프록시 패턴 (스프링 AOP)
   * 프록시 패턴
     * https://refactoring.guru/design-patterns/proxy
+
+- 프록시 패턴 (기존 코드 건드리지 않고 새 기능 추가하기)
