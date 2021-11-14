@@ -336,3 +336,30 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
     
     }
     ```
+
+- PSA 소개 (잘 만든 인터페이스)
+    * 나의 코드
+      * 확장성이 좋지 못한 코드 or 기술에 특화되어 있는 코드
+    * 나의 코드
+      * 잘 만든 인터페이스 (PSA)
+      * 확장성이 좋지 못한 코드 or 기술에 특화되어 있는 코드
+    * Service Abstraction
+      * https://en.wikipedia.org/wiki/Service_abstraction
+
+- 스프링 웹 MVC (@Controller 와 @RequestMapping)
+    * 나의 코드
+    * @Controller | @ReuqestMapping | ...
+    * Servlet | Reactive
+    * 톰캣, 제티, 네티, 언더토우
+
+- 스프링 트랜잭션 (PlatformTransactionManager)
+    * 나의 코드
+    * @Transactional
+    * [PlatformTransactionManager](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/PlatformTransactionManager.html)
+    * JpaTransacionManager | DatasourceTransactionManager | HibernateTransactionManager
+
+- 스프링 캐시 (CacheManager)
+    * 나의 코드
+    * @Cacheable | @CacheEvict | ...
+    * [CacheManager](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/cache/CacheManager.html)
+    * JCacheManager | ConcurrentMapCacheManager | EhCacheCacheManager | ...

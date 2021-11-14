@@ -26,7 +26,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -181,21 +180,20 @@ class OwnerController {
 		}
 	}
 
-	/**
-	 * Custom handler for displaying an owner.
-	 * @param ownerId the ID of the owner to display
-	 * @return a ModelMap with the model attributes for the view
-	 */
-	@GetMapping("/owners/{ownerId}")
-	@LogExecutionTime
-	public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
-		ModelAndView mav = new ModelAndView("owners/ownerDetails");
-		Owner owner = this.owners.findById(ownerId);
-		for (Pet pet : owner.getPets()) {
-			pet.setVisitsInternal(visits.findByPetId(pet.getId()));
-		}
-		mav.addObject(owner);
-		return mav;
-	}
-
+//	/**
+//	 * Custom handler for displaying an owner.
+//	 * @param ownerId the ID of the owner to display
+//	 * @return a ModelMap with the model attributes for the view
+//	 */
+//	@GetMapping("/owners/{ownerId}")
+//	@LogExecutionTime
+//	public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
+//		ModelAndView mav = new ModelAndView("owners/ownerDetails");
+//		Owner owner = this.owners.findById(ownerId);
+//		for (Pet pet : owner.getPets()) {
+//			pet.setVisitsInternal(visits.findByPetId(pet.getId()));
+//		}
+//		mav.addObject(owner);
+//		return mav;
+//	}
 }
